@@ -3,50 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chandan Jedidiah | Cyber Security Portfolio</title>
+    <title>Chandan Jedidiah | Cybersecurity Portfolio</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 40px 20px; background-color: #0f172a; color: #f8fafc; }
-        h1 { color: #38bdf8; border-bottom: 2px solid #334155; padding-bottom: 10px; }
-        h2 { color: #f1f5f9; margin-top: 30px; }
-        .tagline { font-size: 1.2rem; color: #94a3b8; font-style: italic; }
-        .card { background: #1e293b; padding: 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #334155; }
-        .project-title { color: #38bdf8; font-weight: bold; font-size: 1.15rem; margin-bottom: 5px; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 8px; }
-        a { color: #38bdf8; text-decoration: none; }
-        a:hover { text-decoration: underline; }
+        :root {
+            --bg-main: #0b0f19;
+            --bg-card: #131c2e;
+            --border-color: #22314d;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-cyan: #38bdf8;
+            --accent-green: #4ade80;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            line-height: 1.6; 
+            max-width: 850px; 
+            margin: 0 auto; 
+            padding: 60px 24px; 
+            background-color: var(--bg-main); 
+            color: var(--text-primary); 
+        }
+
+        header {
+            margin-bottom: 48px;
+        }
+
+        h1 { 
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-primary); 
+            letter-spacing: -0.025em;
+            margin-bottom: 8px;
+        }
+
+        .tagline { 
+            font-size: 1.15rem; 
+            color: var(--accent-cyan); 
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .contact-info {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info a {
+            color: var(--text-primary);
+            text-decoration: underline;
+            text-decoration-color: var(--border-color);
+            transition: all 0.2s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-cyan);
+            text-decoration-color: var(--accent-cyan);
+        }
+
+        h2 { 
+            color: var(--text-primary); 
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 48px; 
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        h2::before {
+            content: ">";
+            color: var(--accent-green);
+            font-family: monospace;
+            font-weight: bold;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+
+        .card { 
+            background: var(--bg-card); 
+            padding: 24px; 
+            border-radius: 12px; 
+            margin-bottom: 20px; 
+            border: 1px solid var(--border-color); 
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-cyan);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .project-title { 
+            color: var(--text-primary); 
+            font-weight: 700; 
+            font-size: 1.25rem; 
+        }
+
+        .badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-cyan);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .skill-category h3 {
+            color: var(--accent-cyan);
+            font-size: 1rem;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-list li::before {
+            content: "•";
+            color: var(--border-color);
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 40px 16px; }
+            h1 { font-size: 2rem; }
+            .project-header { flex-direction: column; gap: 8px; }
+        }
     </style>
 </head>
 <body>
 
-    <h1>Chandan Jedidiah Gopal Swamy</h1>
-    <p class="tagline">Service Desk Engineer | Transitioning SOC Analyst | ITIL® 4 Certified</p>
-    
-    <p>Contact: <a href="mailto:chandanjedidiah@gmail.com">chandanjedidiah@gmail.com</a> | Location: Sunderland, UK</p>
+    <header>
+        <h1>Chandan Jedidiah</h1>
+        <p class="tagline">Service Desk Engineer &bull; Transitioning SOC Analyst &bull; ITIL&reg; 4 Certified</p>
+        <div class="contact-info">
+            <span>Email: <a href="mailto:chandanjedidiah@gmail.com">chandanjedidiah@gmail.com</a></span>
+            <span>&bull;</span>
+            <span>Location: Sunderland, UK</span>
+        </div>
+    </header>
 
-    <h2>About Me</h2>
-    <p>I’m an IT infrastructure professional with over 4 years of hands-on experience keeping enterprise networks stable, secure, and running smoothly. Day-to-day, I support 500+ global users across Windows, Mac, and hybrid cloud environments.</p>
-    <p>My background is heavily rooted in the core systems that security operations rely on. I spend my time managing Active Directory environments, auditing endpoint compliance agents, enforcing MFA protocols, and troubleshooting network/VPN connectivity issues under tight SLA targets.</p>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I’m an IT infrastructure professional with over 4 years of hands-on experience keeping enterprise networks stable, secure, and running smoothly. Day-to-day, I support 500+ global users across Windows, Mac, and hybrid cloud environments.</p>
+        <p>My background is heavily rooted in the core systems that security operations rely on. I spend my time managing Active Directory environments, auditing endpoint compliance agents, enforcing MFA protocols, and troubleshooting network/VPN connectivity issues under tight SLA targets.</p>
+    </section>
 
-    <h2>Security Labs & Projects</h2>
-    
-    <div class="card">
-        <div class="project-title">SIEM & Detection Engineering Environment</div>
-        <p>I set up an isolated sandbox network utilizing Wazuh to capture and monitor endpoint log telemetry. I use this lab to safely execute brute-force attacks and privilege escalations, analyze the raw log outputs, and write custom detection rules mapped to the MITRE ATT&CK framework.</p>
-    </div>
+    <section id="projects">
+        <h2>Security Labs & Projects</h2>
+        
+        <div class="card">
+            <div class="project-header">
+                <div class="project-title">SIEM & Detection Engineering Environment</div>
+                <span class="badge">Blue Team / Lab</span>
+            </div>
+            <p>I set up an isolated sandbox network utilizing Wazuh to capture and monitor endpoint log telemetry. I use this lab to safely execute brute-force attacks and privilege escalations, analyze the raw log outputs, and write custom detection rules mapped to the MITRE ATT&CK framework.</p>
+        </div>
 
-    <div class="card">
-        <div class="project-title">Python Security Automation</div>
-        <p>A collection of simple, modular Python scripts I wrote to speed up incident investigations. These include tools that parse local system logs for indicators of compromise (IoCs) and query public OSINT threat intelligence feeds like VirusTotal via API.</p>
-    </div>
+        <div class="card">
+            <div class="project-header">
+                <div class="project-title">Python Security Automation</div>
+                <span class="badge">Automation</span>
+            </div>
+            <p>A collection of simple, modular Python scripts I wrote to speed up incident investigations. These include tools that parse local system logs for indicators of compromise (IoCs) and query public OSINT threat intelligence feeds like VirusTotal via API.</p>
+        </div>
+    </section>
 
-    <h2>Technical Tools</h2>
-    <ul>
-        <li><strong>Security & Compliance:</strong> EDR Agent Monitoring, MFA/SSO Administration, Secure VPN Configuration</li>
-        <li><strong>Infrastructure & Cloud:</strong> Active Directory, Microsoft Entra ID, Microsoft Intune, VMware vSphere, Azure/AWS VMs</li>
-        <li><strong>Service Management:</strong> Jira, ServiceNow, Confluence, ITIL Frameworks</li>
-        <li><strong>Scripting:</strong> Python, Bash, SQL</li>
-    </ul>
+    <section id="skills">
+        <h2>Technical Tools</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Security & Compliance</h3>
+                <ul class="skill-list">
+                    <li>EDR Agent Monitoring</li>
+                    <li>MFA/SSO Administration</li>
+                    <li>Secure VPN Configuration</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Infrastructure & Cloud</h3>
+                <ul class="skill-list">
+                    <li>Active Directory & Entra ID</li>
+                    <li>Microsoft Intune</li>
+                    <li>VMware vSphere</li>
+                    <li>Azure / AWS VMs</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Service Management</h3>
+                <ul class="skill-list">
+                    <li>Jira & ServiceNow</li>
+                    <li>Confluence</li>
+                    <li>ITIL Frameworks</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Scripting & Data</h3>
+                <ul class="skill-list">
+                    <li>Python</li>
+                    <li>Bash</li>
+                    <li>SQL</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
 </body>
 </html>
